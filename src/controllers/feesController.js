@@ -6,7 +6,7 @@ const getStudentsWithFeesStatus = async (req, res) => {
 
   try {
     const students = await Student.find({ class: standard });
-    const studentsWithFeesStatus = [];
+    let studentsWithFeesStatus = [];
 
     for (student of students) {
       const fee = await Fees.findOne({ student: student._id });
@@ -14,13 +14,10 @@ const getStudentsWithFeesStatus = async (req, res) => {
         name: student.name,
         uid: student.uid,
         class: student.class,
-        total_fees: fee.total_fees,
-        fees_paid: fee.fees_paid,
-        fees_due: fee.fees_due,
+        fees: fee,
       });
     }
-
-    res.status(200).json(studentsWithFeesStatus);
+    res.status(200).json({ studentsWithFeesStatus });
   } catch (e) {
     console.log(e);
     res.status(500).json({ error: "Internal Server Error" });

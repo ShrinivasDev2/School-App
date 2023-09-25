@@ -16,6 +16,9 @@ const teacherSchema = new mongoose.Schema({
   mail_id: {
     type: String,
   },
+  profile_picture: {
+    type: String,
+  },
 });
 
 const Teacher = mongoose.model("Teacher", teacherSchema);
