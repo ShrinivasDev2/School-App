@@ -1,14 +1,17 @@
 const mongoose = require("mongoose");
 
 const applicationFeeSchema = new mongoose.Schema({
-  id: {
-    type: Number,
-  },
   application_name: {
     type: String,
   },
   amount: {
     type: Number,
+  },
+  student_name: {
+    type: String,
+  },
+  class_name: {
+    type: String,
   },
   paid_date: {
     type: Date,
@@ -16,8 +19,32 @@ const applicationFeeSchema = new mongoose.Schema({
 });
 
 const admissionFeeSchema = new mongoose.Schema({
-  id: {
+  amount: {
     type: Number,
+  },
+  student_name: {
+    type: String,
+  },
+  class_name: {
+    type: String,
+  },
+  paid_date: {
+    type: Date,
+  },
+});
+
+const transferCertificateSchema = new mongoose.Schema({
+  uid: {
+    type: String,
+  },
+  name: {
+    type: String,
+  },
+  class_name: {
+    type: String,
+  },
+  tc_number: {
+    type: String,
   },
   amount: {
     type: Number,
@@ -27,50 +54,29 @@ const admissionFeeSchema = new mongoose.Schema({
   },
 });
 
-const transferCertificateSchema = new mongoose.Schema({
-  id: {
-    type: Number,
-  },
+const studyCertificateSchema = new mongoose.Schema({
   uid: {
     type: String,
   },
   name: {
     type: String,
   },
-  date_issued: {
-    type: Date,
-  },
-  tc_number: {
+  class_name: {
     type: String,
   },
   amount: {
     type: Number,
   },
-});
-
-const studeyCertificateSchema = new mongoose.Schema({
-  id: {
-    type: Number,
-  },
-  uid: {
-    type: String,
-  },
-  name: {
-    type: String,
-  },
-  amount: {
-    type: Number,
-  },
-  issued_date: {
+  paid_date: {
     type: Date,
   },
 });
 
 const materialSchema = new mongoose.Schema({
-  id: {
-    type: Number,
-  },
   name: {
+    type: String,
+  },
+  uid: {
     type: String,
   },
   item: {
@@ -85,10 +91,16 @@ const materialSchema = new mongoose.Schema({
 });
 
 const otherFeesSchema = new mongoose.Schema({
-  id: {
-    type: Number,
-  },
   name: {
+    type: String,
+  },
+  uid: {
+    type: String,
+  },
+  class_name: {
+    type: String,
+  },
+  item: {
     type: String,
   },
   amount: {
@@ -110,7 +122,7 @@ const accountsSchema = new mongoose.Schema({
     type: [transferCertificateSchema],
   },
   study_certificate: {
-    type: [studeyCertificateSchema],
+    type: [studyCertificateSchema],
   },
   materials_fee: {
     type: [materialSchema],

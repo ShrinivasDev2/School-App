@@ -2,11 +2,13 @@ const Accounts = require("../models/accounts");
 
 const addApplicationFees = async (req, res) => {
   try {
-    const { id, application_name, amount, paid_date } = req.body;
+    const { application_name, amount, student_name, class_name, paid_date } =
+      req.body;
     const newApplicationFee = {
-      id,
       application_name,
       amount,
+      student_name,
+      class_name,
       paid_date,
     };
     const accounts = await Accounts.updateOne(
@@ -23,10 +25,11 @@ const addApplicationFees = async (req, res) => {
 
 const addAdmissionFee = async (req, res) => {
   try {
-    const { id, amount, paid_date } = req.body;
+    const { amount, student_name, class_name, paid_date } = req.body;
     const newAdmissionFee = {
-      id,
       amount,
+      student_name,
+      class_name,
       paid_date,
     };
     const accounts = await Accounts.updateOne(
@@ -43,14 +46,14 @@ const addAdmissionFee = async (req, res) => {
 
 const addTransferCertificateFee = async (req, res) => {
   try {
-    const { id, uid, name, date_issued, tc_number, amount } = req.body;
+    const { uid, name, class_name, tc_number, amount, paid_date } = req.body;
     const newTransferCertificateFee = {
-      id,
       uid,
       name,
-      date_issued,
+      class_name,
       tc_number,
       amount,
+      paid_date,
     };
     const accounts = await Accounts.updateOne(
       {},
@@ -66,13 +69,13 @@ const addTransferCertificateFee = async (req, res) => {
 
 const addStudyCertificateFee = async (req, res) => {
   try {
-    const { id, uid, name, amount, issued_date } = req.body;
+    const { uid, name, class_name, amount, paid_date } = req.body;
     const newStudyCertificateFee = {
-      id,
       uid,
       name,
+      class_name,
       amount,
-      issued_date,
+      paid_date,
     };
     const accounts = await Accounts.updateOne(
       {},
@@ -88,10 +91,10 @@ const addStudyCertificateFee = async (req, res) => {
 
 const addMaterialFee = async (req, res) => {
   try {
-    const { id, name, item, amount, paid_date } = req.body;
+    const { name, uid, item, amount, paid_date } = req.body;
     const newMaterialFee = {
-      id,
       name,
+      uid,
       item,
       amount,
       paid_date,
@@ -110,10 +113,12 @@ const addMaterialFee = async (req, res) => {
 
 const addOtherFee = async (req, res) => {
   try {
-    const { id, name, amount, paid_date } = req.body;
+    const { name, uid, class_name, item, amount, paid_date } = req.body;
     const newOtherFee = {
-      id,
       name,
+      uid,
+      class_name,
+      item,
       amount,
       paid_date,
     };
