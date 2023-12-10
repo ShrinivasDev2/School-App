@@ -14,7 +14,7 @@ const getDashboardData = async (req, res) => {
       const fees = await Fees.findOne({ student: student._id });
       if (fees.fees_paid === fees.total_fees) {
         paidStudents.push({
-          name: student > name,
+          name: student.name,
           uid: student.uid,
           amount: fees.fees_paid,
         });
