@@ -4,8 +4,9 @@ const addTeacher = async (req, res) => {
   const teacher = req.body;
   try {
     const newTeacher = new Teacher(teacher);
-    await newTeacher.save();
+    const test = await newTeacher.save();
     res.status(201).json({ message: "Teacher Data Saved Successfully" });
+    console.log(test);
   } catch (e) {
     console.log(e);
     res.status(500).json({ error: "Internal Server Error" });
