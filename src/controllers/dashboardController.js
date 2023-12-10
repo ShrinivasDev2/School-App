@@ -39,6 +39,7 @@ const getDashboardData = async (req, res) => {
     };
     res.status(200).json(dashboardData);
   } catch (e) {
+    console.log(e);
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
