@@ -6,5 +6,6 @@ Router.post("/addStudent", StudentController.addStudent);
 Router.get("/getAll/:class", StudentController.getStudentsByClass);
 Router.put("/editStudent/:uid", StudentController.editStudentDetails);
 Router.get("/getAStudent/:uid", StudentController.getAStudent);
+Router.delete("/deleteStudent/:uid", StudentController.deleteStudent);
 
 module.exports = Router;

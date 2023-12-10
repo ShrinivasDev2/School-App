@@ -60,6 +60,7 @@ const addStudent = async (req, res) => {
     res.status(201).json({ message: "Student Data saved Successfully" });
   } catch (e) {
     res.status(400).send(e);
+    console.log(e);
   }
 };
 
@@ -71,6 +72,7 @@ const getStudentsByClass = async (req, res) => {
     res.status(200).json(students);
   } catch (error) {
     res.status(500).json({ error: "Internal Server Error" });
+    console.log(e);
   }
 };
 
@@ -87,6 +89,7 @@ const editStudentDetails = async (req, res) => {
     res.status(200).json({ Message: "Student Details Updated Successfully" });
   } catch (e) {
     res.status(500).json({ error: "Internal Server Error" });
+    console.log(e);
   }
 };
 
@@ -98,6 +101,25 @@ const getAStudent = async (req, res) => {
   } catch (e) {
     console.log(e);
     res.json({ message: "Internal Server Error" });
+    console.log(e);
+  }
+};
+
+const deleteStudent = async (req, res) => {
+  const uid = req.params.uid;
+  try {
+    const student = await Student.findOneAndDelete({ uid: uid });
+
+    if (!student) {
+      return res.status(404).json({ error: "Student Not Found!" });
+    }
+
+    await Fees.deleteMany({ student: student._id });
+
+    res.status(200).json({ message: "Student Deleted Successfully" });
+  } catch (e) {
+    console.log(e);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };
 
@@ -106,4 +128,5 @@ module.exports = {
   getStudentsByClass,
   editStudentDetails,
   getAStudent,
+  deleteStudent,
 };
