@@ -21,6 +21,7 @@ const login = async (req, res) => {
     console.log("Logged in as : " + req.body.role);
     res.status(200).json({ Message: "Logged In Successfull" });
   } catch (e) {
+    console.log(e);
     res.status(400).send(e);
   }
 };

@@ -18,7 +18,7 @@ const addApplicationFees = async (req, res) => {
     );
     res.json({ message: "Application Fees Added Successfully" });
   } catch (error) {
-    console.error(error);
+    console.log(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
@@ -39,7 +39,7 @@ const addAdmissionFee = async (req, res) => {
     );
     res.json({ message: "Admission Fees Added Successfully" });
   } catch (error) {
-    console.error(error);
+    console.log(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
@@ -62,7 +62,7 @@ const addTransferCertificateFee = async (req, res) => {
     );
     res.json({ message: "TC details added successfully" });
   } catch (error) {
-    console.error(error);
+    console.log(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
@@ -84,7 +84,7 @@ const addStudyCertificateFee = async (req, res) => {
     );
     res.json({ message: "Study certificate Added Successfully" });
   } catch (error) {
-    console.error(error);
+    console.log(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
@@ -106,7 +106,7 @@ const addMaterialFee = async (req, res) => {
     );
     res.json({ message: "Material Fees Added Successfully" });
   } catch (error) {
-    console.error(error);
+    console.log(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
@@ -129,7 +129,7 @@ const addOtherFee = async (req, res) => {
     );
     res.json({ message: "Other Fees Added Successfully" });
   } catch (error) {
-    console.error(error);
+    console.log(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
@@ -173,7 +173,7 @@ const getAccountsDetails = async (req, res) => {
       OtherFeesList,
     });
   } catch (e) {
-    console.error(e);
+    console.log(e);
     res.status(500).json({ error: "Internal Server Error!" });
   }
 };
